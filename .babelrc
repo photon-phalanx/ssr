@@ -1,0 +1,17 @@
+{
+  "presets": ["@babel/react", ["@babel/env", {
+    "targets": {
+      "browsers": ["last 2 versions"]
+    }
+  }]],
+  "plugins": [
+    "@babel/transform-runtime",
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    "@babel/plugin-proposal-class-properties"
+  ]
+}

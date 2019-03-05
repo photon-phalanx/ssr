@@ -4,8 +4,7 @@ import {connect} from 'react-redux'
 import {getHomeList} from './store/actions'
 class Home extends Component{
 
-  state = {
-  }
+  state = {}
 
   componentWillMount () {
     this.props.getHomeList()
