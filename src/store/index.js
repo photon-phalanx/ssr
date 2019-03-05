@@ -7,7 +7,6 @@ const reducer = combineReducers({
 })
 
 const getStore = (inBrowser = false) => {
-  console.log(inBrowser && window.__REDUX_DEVTOOLS_EXTENSION__)
   return createStore(reducer,
     compose(applyMiddleware(thunk),
       (inBrowser && window.__REDUX_DEVTOOLS_EXTENSION__) ? window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -16,4 +15,17 @@ const getStore = (inBrowser = false) => {
   )
 }
 
-export default getStore
+const getClientStore = () => {
+  // const defaultState = window.context.state
+  // return createStore(reducer,
+  //   compose(applyMiddleware(thunk),
+  //     (inBrowser && window.__REDUX_DEVTOOLS_EXTENSION__) ? window.__REDUX_DEVTOOLS_EXTENSION__()
+  //       : f => f
+  //   )
+  // )
+}
+
+export {
+  getStore,
+  getClientStore
+}
