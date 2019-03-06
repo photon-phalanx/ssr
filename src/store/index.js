@@ -6,23 +6,21 @@ const reducer = combineReducers({
   home: homeReducer,
 })
 
-const getStore = (inBrowser = false) => {
+const getStore = () => {
   return createStore(reducer,
-    compose(applyMiddleware(thunk),
-      (inBrowser && window.__REDUX_DEVTOOLS_EXTENSION__) ? window.__REDUX_DEVTOOLS_EXTENSION__()
-        : f => f
-    )
+    applyMiddleware(thunk)
   )
 }
 
 const getClientStore = () => {
-  // const defaultState = window.context.state
-  // return createStore(reducer,
-  //   compose(applyMiddleware(thunk),
-  //     (inBrowser && window.__REDUX_DEVTOOLS_EXTENSION__) ? window.__REDUX_DEVTOOLS_EXTENSION__()
-  //       : f => f
-  //   )
-  // )
+  const defaultState = window.context.state
+  return createStore(reducer,
+    defaultState,
+    compose(applyMiddleware(thunk),
+      window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__()
+        : f => f
+    )
+  )
 }
 
 export {

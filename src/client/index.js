@@ -9,7 +9,7 @@ const store = getClientStore()
 
 const App = () => {
   return (
-    <Provider store={getClientStore(true)}>
+    <Provider store={store}>
       <BrowserRouter>
         <div>
           {Routes.map(route => (

@@ -7,7 +7,7 @@ class Home extends Component{
   state = {}
 
   componentWillMount () {
-    this.props.getHomeList()
+    if (!this.props.home.newsList.length) this.props.getHomeList()
   }
 
   static loadData = async (store) => {
