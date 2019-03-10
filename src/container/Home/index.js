@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Header from '../../components/header'
 import {connect} from 'react-redux'
 import {getHomeList} from './store/actions'
 class Home extends Component{
@@ -17,7 +16,6 @@ class Home extends Component{
 
   render () {
     return <div>
-      <Header/>
       <div>HOME334 {this.props.home.name}</div>
       <ul>
         {this.props.home.newsList.map(v => (

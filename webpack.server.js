@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const {resolve} = require('path')
 const nodeExternals = require('webpack-node-externals')
 const merge = require('webpack-merge')
@@ -24,6 +25,11 @@ const serverConfig = {
         }]]
       }
     }]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.isServer': 'true'
+    })
+  ]
 }
 module.exports = merge(config, serverConfig)
