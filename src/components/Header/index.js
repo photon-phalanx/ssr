@@ -2,7 +2,6 @@ import React, {Fragment} from 'react'
 import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { actions } from './store'
-import { handleLogout } from './store/actions'
 const Header = (props) => {
   function loginClick () {
     props.handleLogin()
@@ -14,7 +13,7 @@ const Header = (props) => {
 
   return <div>
     <header>header</header>
-    <Link to='/'>Home</Link>
+    <Link to='/home'>Home</Link>
     <br/>
     {
       props.login ? (

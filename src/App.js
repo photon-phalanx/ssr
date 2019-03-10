@@ -4,6 +4,7 @@ import { renderRoutes } from 'react-router-config'
 import {actions} from './components/Header/store'
 
 const App = ({route}) => {
+  console.log('app render', route.routes)
   return <div>
     <Header/>
     {renderRoutes(route.routes)}

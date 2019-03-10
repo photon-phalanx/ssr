@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom'
 import * as actions from './store/actions'
 
 const Translation = (props) => {
+  console.log('props.login', props.login)
   if (!props.login) {
     return <Redirect to='/'/>
   }

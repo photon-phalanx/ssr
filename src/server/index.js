@@ -33,16 +33,32 @@ app.get('*', async (req, res) => {
 
   const matchedRoutes = matchRoutes(routes, req.path)
 
+  const context = {}
+
   const promises = []
+  let status = 200
+
   matchedRoutes.forEach(({route}) => {
+    if (route.fail) status = 404
     if (route.loadData) {
-      promises.push(route.loadData(store))
+      const promise = new Promise((resolve, reject) => {
+        route.loadData(store).then(resolve).catch(resolve)
+      })
+      promises.push(promise)
     }
   })
-  console.log(promises)
-  await Promise.all(promises)
 
-  res.send(render(req, store))
+  await Promise.all(promises)
+  const html = render(req, store, context)
+
+  // 控制服务端301， staticRouter会在Redirect的时候往context里塞入一个action
+  if (context.action === 'REPLACE') {
+    // status = 301
+    // 血的教训，301会被前端缓存，要爆炸的，302啊啊啊啊啊啊啊
+    return res.redirect(302, context.url)
+  }
+
+  res.send(status, html)
 })
 
 const server = app.listen(3000, function () {

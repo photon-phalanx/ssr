@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import Home from './container/Home'
-import Home2 from './container/HomeWithHooks'
 import Translation from './container/Translation'
 import App from './App'
+import NotFound from './container/NotFound'
 
 export default [
   {
@@ -12,7 +12,7 @@ export default [
     loadData: App.loadData,
     routes: [
       {
-        path: "/",
+        path: "/home",
         component: Home,
         exact: true,
         key: 'home',
@@ -24,6 +24,10 @@ export default [
         exact: true,
         loadData: Translation.loadData,
         component: Translation
+      },
+      {
+        component: NotFound,
+        fail: true
       }
     ]
   }

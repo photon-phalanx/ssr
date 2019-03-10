@@ -9,6 +9,7 @@ const setHeaderInfo = (isLogin) => ({
 export const getHeaderInfo = () => async (dispatch) => {
 
   const {data: {isLogin}} = await axios.get('/api/isLogin')
+  console.log('getHeaderInfo', isLogin)
   dispatch(setHeaderInfo(isLogin))
 }
 

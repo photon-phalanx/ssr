@@ -25,6 +25,7 @@ export default (app) => {
   })
 
   app.get('/ssr/isLogin', (req, res) => {
+    console.log('ssr isLogin', !!ipMap[req.ip])
     res.json({
       success: true,
       isLogin: !!ipMap[req.ip]

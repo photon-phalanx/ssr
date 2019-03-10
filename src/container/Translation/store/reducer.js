@@ -6,7 +6,7 @@ const defaultState = {
 export default (state = defaultState, action) => {
   switch (action.type) {
     case SET_TRANSLATION_LIST : {
-      console.log('change login', action.payload)
+      console.log('SET_TRANSLATION_LIST', action.payload)
       return {
         ...state,
         list: action.payload

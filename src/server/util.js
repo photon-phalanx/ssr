@@ -5,10 +5,10 @@ import React from 'react'
 import { renderRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
 
-export const render = (req, store) => {
+export const render = (req, store, context) => {
   const str = renderToString((
     <Provider store={store}>
-      <StaticRouter location={req.path} context={{}}>
+      <StaticRouter location={req.path} context={context}>
         <div>
           {renderRoutes(routes)}
           {/*{routes.map(route => (*/}
