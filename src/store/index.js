@@ -1,9 +1,13 @@
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux'
 import thunk from 'redux-thunk'
 import {reducer as homeReducer} from '../container/Home/store'
+import {reducer as translationReducer} from '../container/Translation/store'
+import {reducer as headerReducer} from '../components/Header/store'
 
 const reducer = combineReducers({
   home: homeReducer,
+  header: headerReducer,
+  translation: translationReducer,
 })
 
 const getStore = () => {
