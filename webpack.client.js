@@ -5,6 +5,21 @@ const config = require('./webpack.base')
 const clientConfig = {
   entry: './src/client/index.js',
   mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            modules: true,
+            localIdentName: '[name]_[local]_[hash]'
+          }
+        }]
+      }
+    ]
+  },
   output: {
     filename: 'index.js',
     path: resolve(__dirname, 'public')

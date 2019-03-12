@@ -18,10 +18,14 @@ export const render = (req, store, context) => {
       </StaticRouter>
     </Provider>
   ))
+
+  const cssStr = context.css || ''
+
   return `
   <html>
     <body>
     <div id="root">${str}</div>
+    <style>${cssStr}</style>
     <script>
     window.context= {
       state: ${JSON.stringify(store.getState())}

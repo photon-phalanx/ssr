@@ -1,11 +1,15 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getHomeList} from './store/actions'
+import withStyle from '../../withStyle'
+import style from './style.css'
+
 class Home extends Component{
 
   state = {}
 
   componentWillMount () {
+    console.log(this.props)
     if (!this.props.home.newsList.length) this.props.getHomeList()
   }
 
@@ -32,4 +36,4 @@ const mapDispatchToProps = {
   getHomeList
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyle(Home, style))
